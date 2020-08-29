@@ -11,18 +11,24 @@ var core_1 = require("@angular/core");
 var sweetalert2_1 = require("sweetalert2");
 var operators_1 = require("rxjs/operators");
 var ClientesComponent = /** @class */ (function () {
-    function ClientesComponent(clienteService) {
+    function ClientesComponent(clienteService, activatedRoute) {
         this.clienteService = clienteService;
+        this.activatedRoute = activatedRoute;
     }
     ClientesComponent.prototype.ngOnInit = function () {
         var _this = this;
-        var page = 0;
-        this.clienteService.getClientes(page).pipe(operators_1.tap(function (response) {
-            console.log('ClientesComponent: tap 3');
-            response.content.forEach(function (cliente) {
-                console.log(cliente.nombre);
-            });
-        })).subscribe(function (response) { return _this.clientes = response.content; });
+        this.activatedRoute.paramMap.subscribe(function (params) {
+            var page = +params.get('page');
+            if (!page) {
+                page = 0;
+            }
+            _this.clienteService.getClientes(page).pipe(operators_1.tap(function (response) {
+                console.log('ClientesComponent: tap 3');
+                response.content.forEach(function (cliente) {
+                    console.log(cliente.nombre);
+                });
+            })).subscribe(function (response) { return _this.clientes = response.content; });
+        });
     };
     ClientesComponent.prototype["delete"] = function (cliente) {
         var _this = this;
