@@ -27,7 +27,10 @@ var ClientesComponent = /** @class */ (function () {
                 response.content.forEach(function (cliente) {
                     console.log(cliente.nombre);
                 });
-            })).subscribe(function (response) { return _this.clientes = response.content; });
+            })).subscribe(function (response) {
+                _this.clientes = response.content;
+                _this.paginador = response;
+            });
         });
     };
     ClientesComponent.prototype["delete"] = function (cliente) {

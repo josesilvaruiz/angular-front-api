@@ -27,6 +27,7 @@ var header_component_1 = require("./header/header.component");
 var footer_component_1 = require("./footer/footer.component");
 var directiva_component_1 = require("./directiva/directiva.component");
 var clientes_component_1 = require("./clientes/clientes.component");
+var paginator_component_1 = require("./paginator/paginator.component");
 var form_component_1 = require("./clientes/form.component");
 var common_2 = require("@angular/common");
 var routes = [
@@ -48,7 +49,8 @@ var AppModule = /** @class */ (function () {
                 footer_component_1.FooterComponent,
                 directiva_component_1.DirectivaComponent,
                 clientes_component_1.ClientesComponent,
-                form_component_1.FormComponent
+                form_component_1.FormComponent,
+                paginator_component_1.PaginatorComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,

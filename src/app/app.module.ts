@@ -30,8 +30,10 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { DirectivaComponent } from './directiva/directiva.component';
 import { ClientesComponent } from './clientes/clientes.component';
+import { PaginatorComponent } from './paginator/paginator.component';
 import { FormComponent } from './clientes/form.component';
 import { CommonModule } from '@angular/common';
+
 
 
 
@@ -52,7 +54,8 @@ const routes: Routes = [
     FooterComponent,
     DirectivaComponent,
     ClientesComponent,
-    FormComponent
+    FormComponent,
+    PaginatorComponent
   ],
   imports: [
     BrowserModule,
