@@ -21,6 +21,9 @@ var forms_1 = require("@angular/forms");
 var common_1 = require("@angular/common");
 var es_1 = require("@angular/common/locales/es");
 common_1.registerLocaleData(es_1["default"], 'es');
+// Datepicker -> angularmaterials
+var datepicker_1 = require("@angular/material/datepicker");
+var material_moment_adapter_1 = require("@angular/material-moment-adapter");
 //Components
 var app_component_1 = require("./app.component");
 var header_component_1 = require("./header/header.component");
@@ -30,6 +33,7 @@ var clientes_component_1 = require("./clientes/clientes.component");
 var paginator_component_1 = require("./paginator/paginator.component");
 var form_component_1 = require("./clientes/form.component");
 var common_2 = require("@angular/common");
+var animations_1 = require("@angular/platform-browser/animations");
 var routes = [
     { path: '', redirectTo: '/clientes', pathMatch: 'full' },
     { path: 'directivas', component: directiva_component_1.DirectivaComponent },
@@ -57,7 +61,8 @@ var AppModule = /** @class */ (function () {
                 router_1.RouterModule.forRoot(routes),
                 http_1.HttpClientModule,
                 forms_1.FormsModule,
-                common_2.CommonModule
+                common_2.CommonModule,
+                animations_1.BrowserAnimationsModule, datepicker_1.MatDatepickerModule, material_moment_adapter_1.MatMomentDateModule
             ],
             providers: [cliente_service_1.ClienteService, { provide: core_1.LOCALE_ID, useValue: 'es' }],
             bootstrap: [app_component_1.AppComponent]

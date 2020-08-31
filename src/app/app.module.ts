@@ -23,6 +23,11 @@ import { registerLocaleData } from '@angular/common'
 import localeEs from '@angular/common/locales/es';
 registerLocaleData(localeEs, 'es');
 
+// Datepicker -> angularmaterials
+
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+
 //Components
 
 import { AppComponent } from './app.component';
@@ -33,6 +38,7 @@ import { ClientesComponent } from './clientes/clientes.component';
 import { PaginatorComponent } from './paginator/paginator.component';
 import { FormComponent } from './clientes/form.component';
 import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -62,7 +68,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     HttpClientModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    BrowserAnimationsModule, MatDatepickerModule, MatMomentDateModule
   ],
   providers: [ClienteService, {provide: LOCALE_ID, useValue: 'es' }],
   bootstrap: [AppComponent]

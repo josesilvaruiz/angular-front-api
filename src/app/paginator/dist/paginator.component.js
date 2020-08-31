@@ -12,7 +12,24 @@ var PaginatorComponent = /** @class */ (function () {
     function PaginatorComponent() {
     }
     PaginatorComponent.prototype.ngOnInit = function () {
-        this.paginas = new Array(this.paginador.totalPages).fill(0).map(function (valor, indice) { return indice + 1; });
+        this.initPaginator();
+    };
+    PaginatorComponent.prototype.ngOnChanges = function (changes) {
+        var paginadorActualizado = changes['paginador'];
+        if (paginadorActualizado.previousValue) {
+            this.initPaginator();
+        }
+    };
+    PaginatorComponent.prototype.initPaginator = function () {
+        var _this = this;
+        this.desde = Math.min(Math.max(1, this.paginador.number - 4), this.paginador.totalPages - 5);
+        this.hasta = Math.max(Math.min(this.paginador.totalPages, this.paginador.number + 4), 6);
+        if (this.paginador.totalPages > 5) {
+            this.paginas = new Array(this.hasta - this.desde + 1).fill(0).map(function (valor, indice) { return indice + _this.desde; });
+        }
+        else {
+            this.paginas = new Array(this.paginador.totalPages).fill(0).map(function (valor, indice) { return indice + 1; });
+        }
     };
     __decorate([
         core_1.Input()
