@@ -1,0 +1,21 @@
+
+<div class="card bg-dark text-white">
+    <div class="card-header">{{ titulo }}</div>
+        <div class="card-body">
+            <div class="input-group" style="margin-bottom:10px;">
+                <div *ngIf="!cliente.imagen" class="custom-file">
+                    <input (change)="seleccionarImagen($event)"   type="file" class="custom-file-input" id="customFileLang" lang="es">
+                    <label class="custom-file-label" for="customFileLang">Seleccionar Imagen</label>
+                </div>
+                <div *ngIf="cliente.imagen" class="custom-file">
+                    <input (change)="seleccionarImagen($event)"   type="file" class="custom-file-input" id="customFilePers" lang="es">
+                    <label class="custom-file-label" for="customFileLang">{{ cliente.imagen }}</label>
+                </div>
+                
+                
+            </div>
+            <div class="botonsubir">
+                <button (click)="subirImagen()" type="file" class="btn btn-success" id="inputGroupFileAddon04">Subir</button>
+            </div>
+        </div>
+</div>

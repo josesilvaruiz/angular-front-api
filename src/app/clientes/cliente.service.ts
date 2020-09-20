@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class ClienteService {
-  private urlEndPoint: string = 'http://localhost:8080/api/clientes'
+  private urlEndPoint: string = 'http://localhost:8090/api/clientes'
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'})
 
   constructor(private http: HttpClient, private router: Router) { }
@@ -87,4 +87,19 @@ export class ClienteService {
       })
     );
   }
+
+  subirImagen(archivo: File, id) : Observable<Cliente>{
+    let formData = new FormData();
+    formData.append("archivo", archivo);
+    formData.append("id", id);
+    return this.http.post(`${this.urlEndPoint}/upload/`, formData).pipe(
+      map((response: any) => response.cliente as Cliente),
+      catchError(e => {
+        swal('Error al subir la imagen', e.error.mensaje, 'error')
+        return throwError(e);
+      })
+
+    );
+  }
+
 }

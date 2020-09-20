@@ -39,6 +39,7 @@ import { PaginatorComponent } from './paginator/paginator.component';
 import { FormComponent } from './clientes/form.component';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProfileComponent } from './clientes/profile/profile.component';
 
 
 
@@ -50,6 +51,7 @@ const routes: Routes = [
   {path: 'clientes/page/:page', component: ClientesComponent},
   {path: 'cliente/form', component: FormComponent},
   {path: 'cliente/form/:id', component: FormComponent},
+  {path: 'cliente/profile/:id', component: ProfileComponent}
  
 ];
 
@@ -61,7 +63,8 @@ const routes: Routes = [
     DirectivaComponent,
     ClientesComponent,
     FormComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
