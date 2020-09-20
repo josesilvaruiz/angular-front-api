@@ -1,21 +1,42 @@
 
-<div class="card bg-dark text-white">
+<div class="card bg-dark text-white" *ngIf="cliente">
     <div class="card-header">{{ titulo }}</div>
         <div class="card-body">
-            <div class="input-group" style="margin-bottom:10px;">
-                <div *ngIf="!cliente.imagen" class="custom-file">
-                    <input (change)="seleccionarImagen($event)"   type="file" class="custom-file-input" id="customFileLang" lang="es">
-                    <label class="custom-file-label" for="customFileLang">Seleccionar Imagen</label>
-                </div>
-                <div *ngIf="cliente.imagen" class="custom-file">
-                    <input (change)="seleccionarImagen($event)"   type="file" class="custom-file-input" id="customFilePers" lang="es">
-                    <label class="custom-file-label" for="customFileLang">{{ cliente.imagen }}</label>
+            <div class="container">
+                <div class ="row" >
+                    <div class="col-sm">
+                        <img style="max-height: 230px; min-width: 300px;"src="http://localhost:8090/api/uploads/img/{{cliente.imagen}}" alt="{{cliente.imagen}}" class="rounded mx-auto d-block" sizes="max-width: 50px">
+                        
+                    </div>
+
+                    <div class="col-sm">
+                        <ul class="list-group text-dark mb-3">
+                            <li class="list-group-item active">{{cliente.nombre}}</li>
+                            <li class="list-group-item">{{cliente.apellido}}</li>
+                            <li class="list-group-item">{{cliente.email}}</li>
+                            <li class="list-group-item">{{cliente.createAt | date:"fullDate"}}</li>
+                        </ul>
+
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input (change)="seleccionarImagen($event)"   type="file" class="custom-file-input" id="customFileLang" lang="es">
+                                <label class="custom-file-label" for="customFileLang">Actualizar Imagen</label>                               
+                            </div>
+                            <div>
+                                <button (click)="subirImagen()" type="file" [disabled]="!imagenSeleccionada" class="btn btn-success" id="inputGroupFileAddon04">Subir</button>
+                            </div>
+                        </div>                      
+                        <div *ngIf="progreso > 0"class="progress">
+                            <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" [ngStyle]="{width: progreso+ '%'}" attr.aria-valuenow="{{progreso}}" aria-valuemin="0" aria-valuemax="100">
+                                {{progreso}}%
+                            </div>
+                        </div>
+                    </div>
+                   
+                    
                 </div>
                 
-                
             </div>
-            <div class="botonsubir">
-                <button (click)="subirImagen()" type="file" class="btn btn-success" id="inputGroupFileAddon04">Subir</button>
-            </div>
+            
         </div>
 </div>
