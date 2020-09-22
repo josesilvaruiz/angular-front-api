@@ -50,8 +50,7 @@ const routes: Routes = [
   {path: 'clientes', component: ClientesComponent},
   {path: 'clientes/page/:page', component: ClientesComponent},
   {path: 'cliente/form', component: FormComponent},
-  {path: 'cliente/form/:id', component: FormComponent},
-  {path: 'cliente/profile/:id', component: ProfileComponent}
+  {path: 'cliente/form/:id', component: FormComponent}
  
 ];
 

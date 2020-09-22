@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Cliente } from '../cliente';
 import { ClienteService } from '../cliente.service'
@@ -12,24 +12,14 @@ import { HttpEventType } from '@angular/common/http';
 })
 export class ProfileComponent implements OnInit {
 
-  cliente: Cliente;
+  @Input() cliente: Cliente;
   titulo: string = "Perfil del cliente"
   private imagenSeleccionada: File;
   progreso: number = 0;
 
   constructor(private clienteService: ClienteService, private activatedRoute: ActivatedRoute) { }
 
-  ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe(params =>{
-      let id:number = +params.get('id');
-      if(id){
-        this.clienteService.getCliente(id).subscribe(cliente =>{
-          this.cliente = cliente;
-        });
-      }
-    });
-    
-  }
+  ngOnInit(): void {}
   seleccionarImagen(event){
     
     this.imagenSeleccionada =  event.target.files[0];

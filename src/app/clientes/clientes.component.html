@@ -1,3 +1,5 @@
+<profile-cliente *ngIf="clienteSeleccionado" [cliente]="clienteSeleccionado"></profile-cliente>
+
 <div class="card border mb-3">
     <div class="card-header"><h2>Clientes</h2></div>
     <div class="card-body">
@@ -20,13 +22,13 @@
             </thead>
             <tbody *ngFor="let cliente of clientes">
                 <tr>
-                    <td><button type="button" name="button" [routerLink]= "['/cliente/profile', cliente.id]" class="btn btn-success">{{ cliente.id }}</button></td>
+                    <td><button type="button" name="button" (click)="abrirModal(cliente)" class="btn btn-success">{{ cliente.id }}</button></td>
                     <td>{{ cliente.nombre }}</td>
                     <td>{{ cliente.apellido | uppercase}}</td>
                     <td>{{ cliente.email }}</td>
                     <td>{{ cliente.createAt | date:'EEEE dd, MMMM, yyyy'}}</td>
                     <td>
-                        <button type="button" name="editar" [routerLink]= "['/cliente/form', cliente.id]" class="btn btn-primary">editar</button> 
+                        <button type="button" name="editar"  class="btn btn-primary">editar</button> 
                     </td>
                     <td>
                         <button type="button" name="borrar" role="button" (click)='delete(cliente)' class="btn btn-danger">borrar</button> 
