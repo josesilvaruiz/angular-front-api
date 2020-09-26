@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 //Services
 
 import { ClienteService } from './clientes/cliente.service';
+import { ModalService } from './clientes/profile/modal.service'
 
 //Routing
 
