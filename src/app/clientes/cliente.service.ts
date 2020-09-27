@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { formatDate, DatePipe } from '@angular/common'
 import { Cliente } from './cliente';
+import { Region } from './region';
 import { of, Observable, throwError } from 'rxjs';
 import { HttpClient, HttpEvent, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { map, catchError, tap } from 'rxjs/operators';
 import swal from 'sweetalert2';
 import { Router } from '@angular/router';
+
 
 
 @Injectable()
@@ -19,7 +21,9 @@ export class ClienteService {
       map(response => response as Cliente[] ));
      * 
      */
-     
+  getRegiones(): Observable<Region[]>{
+    return this.http.get<Region[]>(this.urlEndPoint + '/regiones');
+  }   
   getClientes(page: number): Observable<any> {
 
     return this.http.get(this.urlEndPoint + '/page/' + page).pipe(

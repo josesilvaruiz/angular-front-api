@@ -57,12 +57,21 @@
                     <mat-datepicker #picker></mat-datepicker>
                 </div>
             </div>
+            <div class="form-group row">
+                <label for="createAt" class="col-form-label col-sm-2">Región</label>
+                <div class="col-sm-6">
+                    <select [compareWith]="compararRegion" class="form-control" [(ngModel)]="cliente.region" name="region" style="width:500px">
+                        <option *ngIf="!cliente.id" [ngValue]="undefined"> Seleccionar región </option>
+                        <option *ngFor="let region of regiones" [ngValue]="region">{{ region.nombre }}</option>
+                    </select>
+                </div>
+            </div>
 
             <div class="form-group row col-sm-6">
                 
                     <button class="btn btn-primary" *ngIf="!cliente.id else elseBlock" role="button" (click)='create()' [disabled]="!clienteForm.form.valid">Crear</button>
                     <ng-template #elseBlock>
-                        <button class="btn btn-primary" role="button" (click)='update()' [disabled]="!clienteForm.form.valid">Editar</button>
+                        <button class="btn btn-primary" role="button" (click)='update()' [disabled]="!clienteForm.form.valid && undefined == region">Editar</button>
                     </ng-template>
                 
             </div>
